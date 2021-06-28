@@ -8,8 +8,12 @@
 
 #import "TimelineViewController.h"
 #import "APIManager.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface TimelineViewController ()
+- (IBAction)logOutButton:(UIButton *)sender;
+
 
 @property (nonatomic, strong) NSMutableArray *tweets;
 
@@ -38,7 +42,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 /*
 #pragma mark - Navigation
 
@@ -50,4 +53,16 @@
 */
 
 
+- (IBAction)logOutButton:(UIButton *)sender {
+    // TimelineViewController.m
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    // sets root view to login view controller page
+    // CHANGES VIEW CONTROLLER WITH BUTTON CLICK
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    [[APIManager shared] logout];
+}
 @end
