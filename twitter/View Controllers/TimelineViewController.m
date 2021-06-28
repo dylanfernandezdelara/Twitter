@@ -10,12 +10,16 @@
 #import "APIManager.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TweetCell.h"
+//do I need the tweet import
+#import "Tweet.h"
 
-@interface TimelineViewController ()
+@interface TimelineViewController ()<UITableViewDelegate, UITableViewDataSource>
 - (IBAction)logOutButton:(UIButton *)sender;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic, strong) NSMutableArray *tweets;
+@property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 
 @end
 
@@ -23,19 +27,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
+            // added a typecast here to be mutable array but not 100% sure if this is correct
+            self.arrayOfTweets = tweets;
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (NSDictionary *dictionary in tweets) {
-                NSMutableArray *text = dictionary[@"text"];
+            for (Tweet *temp in tweets) {
+                // this used to be array
+                NSString *text = temp.text;
                 NSLog(@"%@", text);
             }
+            [self.tableView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
+    // do I need to reload data?
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,4 +77,34 @@
     
     [[APIManager shared] logout];
 }
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    Tweet *tweet_curr = self.arrayOfTweets[indexPath.row];
+    // NSLog(@"STRING: %@", tweet_curr.idStr);
+    
+    // set all properties of cell
+    cell.realNameLabel.text = tweet_curr.user.name;
+    cell.userNameLabel.text = tweet_curr.user.screenName;
+    cell.tweetDateLabel.text = tweet_curr.createdAtString;
+    cell.tweetContentLabel.text = tweet_curr.text;
+    cell.numRetweetsLabel.text = @(tweet_curr.retweetCount).stringValue;
+    cell.numLikesLabel.text = @(tweet_curr.favoriteCount).stringValue;
+    
+    NSString *URLString = tweet_curr.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    cell.pfPicture.image = [UIImage imageWithData:urlData];
+    
+    cell.tweet = tweet_curr;
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"COUNT: %lu", self.arrayOfTweets.count);
+    return self.arrayOfTweets.count;
+}
+
+
 @end

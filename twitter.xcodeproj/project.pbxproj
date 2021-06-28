@@ -20,6 +20,7 @@
 		6EE9E949268A616000DA3FE9 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EE9E948268A616000DA3FE9 /* Keys.plist */; };
 		6EE9E94C268A6A8B00DA3FE9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9E94B268A6A8B00DA3FE9 /* User.m */; };
 		6EE9E94F268A6B7F00DA3FE9 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9E94E268A6B7F00DA3FE9 /* Tweet.m */; };
+		6EE9E952268A806700DA3FE9 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9E951268A806700DA3FE9 /* TweetCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,8 @@
 		6EE9E94B268A6A8B00DA3FE9 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = User.m; path = twitter/Models/User.m; sourceTree = SOURCE_ROOT; };
 		6EE9E94D268A6B7F00DA3FE9 /* Tweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		6EE9E94E268A6B7F00DA3FE9 /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		6EE9E950268A806700DA3FE9 /* TweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
+		6EE9E951268A806700DA3FE9 /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 		75895B6507775E8AFBEEA2D9 /* Pods-twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +134,8 @@
 		6AD278FF20BCBF280085BC29 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6EE9E950268A806700DA3FE9 /* TweetCell.h */,
+				6EE9E951268A806700DA3FE9 /* TweetCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EE9E952268A806700DA3FE9 /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				6EE9E94C268A6A8B00DA3FE9 /* User.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
