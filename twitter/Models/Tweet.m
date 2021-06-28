@@ -35,8 +35,30 @@
         self.user = [[User alloc] initWithDictionary:user];
         
         // TODO: Format and set createdAtString
+        // Format createdAt date string
+        NSString *createdAtOriginalString = dictionary[@"created_at"];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        // Configure the input format to parse the date string
+        formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+        // Convert String to Date
+        NSDate *date = [formatter dateFromString:createdAtOriginalString];
+        // Configure output format
+        formatter.dateStyle = NSDateFormatterShortStyle;
+        formatter.timeStyle = NSDateFormatterNoStyle;
+        // Convert Date to String
+        self.createdAtString = [formatter stringFromDate:date];
+        
     }
     return self;
-}        
+}
+
++ (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries{
+    NSMutableArray *tweets = [NSMutableArray array];
+    for (NSDictionary *dictionary in dictionaries) {
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:dictionary];
+        [tweets addObject:tweet];
+    }
+    return tweets;
+}
 
 @end
