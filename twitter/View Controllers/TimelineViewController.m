@@ -11,6 +11,8 @@
 
 @interface TimelineViewController ()
 
+@property (nonatomic, strong) NSMutableArray *tweets;
+
 @end
 
 @implementation TimelineViewController
@@ -23,7 +25,7 @@
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             for (NSDictionary *dictionary in tweets) {
-                NSString *text = dictionary[@"text"];
+                NSMutableArray *text = dictionary[@"text"];
                 NSLog(@"%@", text);
             }
         } else {
