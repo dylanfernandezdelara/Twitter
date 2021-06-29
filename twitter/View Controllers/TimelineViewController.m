@@ -11,10 +11,10 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TweetCell.h"
-//do I need the tweet import
 #import "Tweet.h"
+#import "ComposeViewController.h"
 
-@interface TimelineViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 - (IBAction)logOutButton:(UIButton *)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -67,16 +67,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 - (IBAction)logOutButton:(UIButton *)sender {
     // TimelineViewController.m
@@ -98,7 +88,7 @@
     
     // set all properties of cell
     cell.realNameLabel.text = tweet_curr.user.name;
-    cell.userNameLabel.text = tweet_curr.user.screenName;
+    cell.userNameLabel.text = [tweet_curr.user.screenName stringByAppendingString:@"@"];
     cell.tweetDateLabel.text = tweet_curr.createdAtString;
     cell.tweetContentLabel.text = tweet_curr.text;
     cell.numRetweetsLabel.text = @(tweet_curr.retweetCount).stringValue;
@@ -119,5 +109,21 @@
     return self.arrayOfTweets.count;
 }
 
+
+- (void)didTweet:(nonnull Tweet *)tweet {
+    // new tweets to the tweet array
+    [self.arrayOfTweets insertObject:tweet atIndex:0];
+    // reload timeline
+    [self.tableView reloadData];
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
+}
 
 @end
