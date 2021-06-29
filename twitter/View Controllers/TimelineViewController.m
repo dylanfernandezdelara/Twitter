@@ -21,6 +21,9 @@
 
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 
+// UIRefreshControl is an object that handles refreshing
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation TimelineViewController
@@ -30,6 +33,17 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    [self getTimeline];
+    
+    // allocated refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getTimeline) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    
+}
+
+- (void)getTimeline {
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -41,13 +55,12 @@
                 NSString *text = temp.text;
                 NSLog(@"%@", text);
             }
+            [self.refreshControl endRefreshing];
             [self.tableView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
-    // do I need to reload data?
-    
 }
 
 - (void)didReceiveMemoryWarning {
