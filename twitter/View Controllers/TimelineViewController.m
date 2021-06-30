@@ -13,7 +13,7 @@
 #import "TweetCell.h"
 #import "Tweet.h"
 #import "ComposeViewController.h"
-#import <QuartzCore/QuartzCore.h>
+#import "DateTools.h"
 
 @interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 - (IBAction)logOutButton:(UIButton *)sender;
@@ -90,7 +90,12 @@
     // set all properties of cell
     cell.realNameLabel.text = tweet_curr.user.name;
     cell.userNameLabel.text = [@"@" stringByAppendingString:tweet_curr.user.screenName];
-    cell.tweetDateLabel.text = tweet_curr.createdAtString;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"M/dd/yy"];
+    NSDate *tweet_date = [dateFormat dateFromString:tweet_curr.createdAtString];
+    cell.tweetDateLabel.text = tweet_date.shortTimeAgoSinceNow;
+    
     cell.tweetContentLabel.text = tweet_curr.text;
     cell.numRetweetsLabel.text = @(tweet_curr.retweetCount).stringValue;
     cell.numLikesLabel.text = @(tweet_curr.favoriteCount).stringValue;
