@@ -13,6 +13,7 @@
 #import "TweetCell.h"
 #import "Tweet.h"
 #import "ComposeViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 - (IBAction)logOutButton:(UIButton *)sender;
@@ -88,17 +89,18 @@
     
     // set all properties of cell
     cell.realNameLabel.text = tweet_curr.user.name;
-    cell.userNameLabel.text = [tweet_curr.user.screenName stringByAppendingString:@"@"];
+    cell.userNameLabel.text = [@"@" stringByAppendingString:tweet_curr.user.screenName];
     cell.tweetDateLabel.text = tweet_curr.createdAtString;
     cell.tweetContentLabel.text = tweet_curr.text;
     cell.numRetweetsLabel.text = @(tweet_curr.retweetCount).stringValue;
     cell.numLikesLabel.text = @(tweet_curr.favoriteCount).stringValue;
     
+    // NSString *URLString = [tweet_curr.user.profilePicture stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     NSString *URLString = tweet_curr.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.pfPicture.image = [UIImage imageWithData:urlData];
-    
+    cell.pfPicture.layer.cornerRadius = 15;
     cell.tweet = tweet_curr;
     
     return cell;
