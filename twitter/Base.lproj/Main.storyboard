@@ -128,8 +128,10 @@
                                                     <rect key="frame" x="270" y="157" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="favor-icon"/>
+                                                    <state key="selected" image="favor-icon-red"/>
+                                                    <state key="highlighted" image="favor-icon-red"/>
                                                     <connections>
-                                                        <action selector="likeButton:" destination="E9p-Q8-mqU" eventType="touchUpInside" id="nsj-LE-2We"/>
+                                                        <action selector="didTapFavorite:" destination="E9p-Q8-mqU" eventType="touchUpInside" id="flY-pB-m6Y"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glx-gz-I5h">
@@ -143,17 +145,20 @@
                                                     <rect key="frame" x="164" y="158" width="30" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="retweet-icon"/>
+                                                    <state key="selected" image="retweet-icon-green"/>
                                                     <connections>
-                                                        <action selector="retweetButton:" destination="E9p-Q8-mqU" eventType="touchUpInside" id="7Qi-Pm-q0c"/>
+                                                        <action selector="didTapRetweet:" destination="E9p-Q8-mqU" eventType="touchUpInside" id="9tU-DP-Oc3"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="likeButton" destination="hjl-V7-DDk" id="8Rf-EN-hNu"/>
                                             <outlet property="numLikesLabel" destination="Glx-gz-I5h" id="M2p-be-PqL"/>
                                             <outlet property="numRetweetsLabel" destination="feY-Xj-kE5" id="3l8-JC-TRI"/>
                                             <outlet property="pfPicture" destination="UrE-d5-gYQ" id="vlK-BS-EUf"/>
                                             <outlet property="realNameLabel" destination="gx5-kF-hWU" id="w6b-xB-wIT"/>
+                                            <outlet property="retweetButton" destination="r3M-Gm-udl" id="kEa-JO-Nvn"/>
                                             <outlet property="tweetContentLabel" destination="Ghn-EB-hR2" id="2h0-ku-z1T"/>
                                             <outlet property="tweetDateLabel" destination="TEy-bQ-1Ff" id="KGG-9r-OhF"/>
                                             <outlet property="userNameLabel" destination="rcD-xK-m2o" id="9Es-2F-Cyq"/>
@@ -282,7 +287,9 @@
         <image name="close-icon" width="26" height="24"/>
         <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
+        <image name="favor-icon-red" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <image name="retweet-icon-green" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
