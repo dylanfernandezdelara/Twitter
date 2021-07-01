@@ -23,6 +23,7 @@
 		6EE9E952268A806700DA3FE9 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9E951268A806700DA3FE9 /* TweetCell.m */; };
 		6EE9E955268BC02000DA3FE9 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9E954268BC02000DA3FE9 /* ComposeViewController.m */; };
 		6EE9E960268D1E8100DA3FE9 /* libDateTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE9E95F268D1E8100DA3FE9 /* libDateTools.a */; };
+		6EE9E963268D2B5B00DA3FE9 /* TweetDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9E962268D2B5B00DA3FE9 /* TweetDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		6EE9E953268BC02000DA3FE9 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		6EE9E954268BC02000DA3FE9 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		6EE9E95F268D1E8100DA3FE9 /* libDateTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDateTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EE9E961268D2B5B00DA3FE9 /* TweetDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetDetailsViewController.h; sourceTree = "<group>"; };
+		6EE9E962268D2B5B00DA3FE9 /* TweetDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetDetailsViewController.m; sourceTree = "<group>"; };
 		75895B6507775E8AFBEEA2D9 /* Pods-twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +159,8 @@
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
 				6EE9E953268BC02000DA3FE9 /* ComposeViewController.h */,
 				6EE9E954268BC02000DA3FE9 /* ComposeViewController.m */,
+				6EE9E961268D2B5B00DA3FE9 /* TweetDetailsViewController.h */,
+				6EE9E962268D2B5B00DA3FE9 /* TweetDetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 				6EE9E952268A806700DA3FE9 /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				6EE9E94C268A6A8B00DA3FE9 /* User.m in Sources */,
+				6EE9E963268D2B5B00DA3FE9 /* TweetDetailsViewController.m in Sources */,
 				6EE9E955268BC02000DA3FE9 /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				6EE9E94F268A6B7F00DA3FE9 /* Tweet.m in Sources */,

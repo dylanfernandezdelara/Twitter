@@ -14,6 +14,7 @@
 #import "Tweet.h"
 #import "ComposeViewController.h"
 #import "DateTools.h"
+#import "TweetDetailsViewController.h"
 
 @interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 - (IBAction)logOutButton:(UIButton *)sender;
@@ -106,6 +107,10 @@
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.pfPicture.image = [UIImage imageWithData:urlData];
     cell.pfPicture.layer.cornerRadius = 15;
+    
+    cell.retweetButton.selected = tweet_curr.retweeted;
+    cell.likeButton.selected = tweet_curr.favorited;
+    
     cell.tweet = tweet_curr;
     
     return cell;
@@ -128,9 +133,18 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-    composeController.delegate = self;
+    if ([segue.identifier isEqualToString:@"segueCompose"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
+    else if([segue.identifier isEqualToString:@"segueDetails"]){
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Tweet *tweet_pressed = self.arrayOfTweets[indexPath.row];
+        TweetDetailsViewController *TweetDetailsView = [segue destinationViewController];
+        TweetDetailsView.detailed_tweet = tweet_pressed;
+    }
 }
 
 @end
