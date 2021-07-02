@@ -8,8 +8,13 @@
 
 #import "TweetCell.h"
 #import "APIManager.h"
+#import "ProfileViewController.h"
 
 @implementation TweetCell
+- (IBAction)tapMovetoProfile:(UIButton *)sender {
+    // segue is handled in timelineViewController
+}
+
 - (IBAction)didTapFavorite:(UIButton *)sender {
     if (self.tweet.favorited == YES){
         self.tweet.favorited = NO;
@@ -44,6 +49,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.pfPicture.layer.cornerRadius  = self.pfPicture.frame.size.width/2;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

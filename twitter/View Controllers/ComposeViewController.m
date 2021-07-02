@@ -8,6 +8,7 @@
 
 #import "ComposeViewController.h"
 #import "APIManager.h"
+#import <QuartzCore/QuartzCore.h> 
 
 @interface ComposeViewController ()
 - (IBAction)closeButton:(UIBarButtonItem *)sender;
@@ -19,7 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[self.textViewArea layer] setBorderColor:[[UIColor blackColor] CGColor]];
+    [[self.textViewArea layer] setBorderWidth:1];
+    [[self.textViewArea layer] setCornerRadius:15];
+    // self.user.layer.cornerRadius  = self.profilePic.frame.size.width/2;
+    // self.user_pfp_picture =
 }
 
 /*

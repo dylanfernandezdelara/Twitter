@@ -24,6 +24,7 @@
 		6EE9E955268BC02000DA3FE9 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9E954268BC02000DA3FE9 /* ComposeViewController.m */; };
 		6EE9E960268D1E8100DA3FE9 /* libDateTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE9E95F268D1E8100DA3FE9 /* libDateTools.a */; };
 		6EE9E963268D2B5B00DA3FE9 /* TweetDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9E962268D2B5B00DA3FE9 /* TweetDetailsViewController.m */; };
+		6EE9E966268E5CCC00DA3FE9 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9E965268E5CCC00DA3FE9 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,8 @@
 		6EE9E95F268D1E8100DA3FE9 /* libDateTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDateTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EE9E961268D2B5B00DA3FE9 /* TweetDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetDetailsViewController.h; sourceTree = "<group>"; };
 		6EE9E962268D2B5B00DA3FE9 /* TweetDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetDetailsViewController.m; sourceTree = "<group>"; };
+		6EE9E964268E5CCC00DA3FE9 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		6EE9E965268E5CCC00DA3FE9 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		75895B6507775E8AFBEEA2D9 /* Pods-twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +164,8 @@
 				6EE9E954268BC02000DA3FE9 /* ComposeViewController.m */,
 				6EE9E961268D2B5B00DA3FE9 /* TweetDetailsViewController.h */,
 				6EE9E962268D2B5B00DA3FE9 /* TweetDetailsViewController.m */,
+				6EE9E964268E5CCC00DA3FE9 /* ProfileViewController.h */,
+				6EE9E965268E5CCC00DA3FE9 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
+				6EE9E966268E5CCC00DA3FE9 /* ProfileViewController.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

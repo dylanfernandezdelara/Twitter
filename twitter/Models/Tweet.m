@@ -23,6 +23,7 @@
             // Change tweet to original tweet
             dictionary = originalTweet;
         }
+        NSLog(@"%@", dictionary);
         self.idStr = dictionary[@"id_str"];
         self.text = dictionary[@"text"];
         self.favoriteCount = [dictionary[@"favorite_count"] intValue];

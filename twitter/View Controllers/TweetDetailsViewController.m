@@ -29,6 +29,7 @@
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     self.profilePic.image = [UIImage imageWithData:urlData];
+    self.profilePic.layer.cornerRadius  = self.profilePic.frame.size.width/2;
     
     self.FullNameLabel.text = self.detailed_tweet.user.name;
     self.atHandleLabel.text = [@"@" stringByAppendingString:self.detailed_tweet.user.screenName];
@@ -43,7 +44,7 @@
     if (self.detailed_tweet.retweeted == YES){
         self.detailed_tweet.retweeted = NO;
         self.detailed_tweet.retweetCount -= 1;
-        self.retweetNumLabel.text = @(self.detailed_tweet.retweetCount).stringValue;
+        self.retweetNumLabel.text = [@(self.detailed_tweet.retweetCount).stringValue stringByAppendingString:@" RETWEETS"];
         self.retweetButton.selected = self.detailed_tweet.retweeted;
         [[APIManager shared] unretweet:self.detailed_tweet completion:^(Tweet *tweet, NSError *error){
             if (error){
@@ -57,7 +58,7 @@
     else if (self.detailed_tweet.retweeted == NO){
         self.detailed_tweet.retweeted = YES;
         self.detailed_tweet.retweetCount += 1;
-        self.retweetNumLabel.text =@(self.detailed_tweet.retweetCount).stringValue;
+        self.retweetNumLabel.text =[@(self.detailed_tweet.retweetCount).stringValue stringByAppendingString:@" RETWEETS"];
         self.retweetButton.selected = self.detailed_tweet.retweeted;
         [[APIManager shared] retweet:self.detailed_tweet completion:^(Tweet *tweet, NSError *error) {
              if(error){
@@ -74,7 +75,7 @@
     if (self.detailed_tweet.favorited == YES){
         self.detailed_tweet.favorited = NO;
         self.detailed_tweet.favoriteCount -= 1;
-        self.likesNumLabel.text = @(self.detailed_tweet.favoriteCount).stringValue;
+        self.likesNumLabel.text = [@(self.detailed_tweet.favoriteCount).stringValue stringByAppendingString:@" FAVORITES"];
         self.likeButton.selected = self.detailed_tweet.favorited;
         [[APIManager shared] unfavorite:self.detailed_tweet completion:^(Tweet *tweet, NSError *error){
             if (error){
@@ -88,7 +89,7 @@
     else if (self.detailed_tweet.favorited == NO){
         self.detailed_tweet.favorited = YES;
         self.detailed_tweet.favoriteCount += 1;
-        self.likesNumLabel.text =@(self.detailed_tweet.favoriteCount).stringValue;
+        self.likesNumLabel.text = [@(self.detailed_tweet.favoriteCount).stringValue stringByAppendingString:@" FAVORITES"];
         self.likeButton.selected = self.detailed_tweet.favorited;
         [[APIManager shared] favorite:self.detailed_tweet completion:^(Tweet *tweet, NSError *error) {
              if(error){

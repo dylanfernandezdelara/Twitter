@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *numLikesLabel;
+@property (weak, nonatomic) IBOutlet UIButton *goToProfile;
 
 // not sure if this is NSDictionary or not
 @property (nonatomic, strong) Tweet *tweet;

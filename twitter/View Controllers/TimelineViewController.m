@@ -15,10 +15,10 @@
 #import "ComposeViewController.h"
 #import "DateTools.h"
 #import "TweetDetailsViewController.h"
+#import "ProfileViewController.h"
 
 @interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 - (IBAction)logOutButton:(UIButton *)sender;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
@@ -35,6 +35,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    UIImageView *titleImage = (UIImageView *)self.navigationItem.titleView;
+    titleImage = [[UIImageView alloc]initWithFrame:CGRectMake((self.navigationController.navigationBar.frame.size.width/2) - (100/2), 0, 100,self.navigationController.navigationBar.frame.size.height)];
+    titleImage.image = [UIImage imageNamed:@"nav_logo"];
+    titleImage.contentMode = UIViewContentModeCenter;
+    [titleImage setContentMode:UIViewContentModeScaleAspectFit];
+    self.navigationItem.titleView = titleImage;
+
     [self getTimeline];
     
     // allocated refresh control
@@ -106,13 +113,12 @@
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.pfPicture.image = [UIImage imageWithData:urlData];
-    cell.pfPicture.layer.cornerRadius = 15;
+    //cell.pfPicture.layer.cornerRadius = 15;
     
     cell.retweetButton.selected = tweet_curr.retweeted;
     cell.likeButton.selected = tweet_curr.favorited;
     
     cell.tweet = tweet_curr;
-    
     return cell;
 }
 
@@ -120,7 +126,6 @@
     NSLog(@"COUNT: %lu", self.arrayOfTweets.count);
     return self.arrayOfTweets.count;
 }
-
 
 - (void)didTweet:(nonnull Tweet *)tweet {
     // new tweets to the tweet array
@@ -145,6 +150,14 @@
         TweetDetailsViewController *TweetDetailsView = [segue destinationViewController];
         TweetDetailsView.detailed_tweet = tweet_pressed;
     }
+    else if([segue.identifier isEqualToString:@"homeToProfile"]){
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Tweet *tweet_pressed = self.arrayOfTweets[indexPath.row];
+        ProfileViewController *profileView = [segue destinationViewController];
+        profileView.detailed_tweet = tweet_pressed;
+    }
+   
 }
 
 @end
