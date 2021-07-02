@@ -45,6 +45,13 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 ![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/65196174/124213401-179cff00-dab6-11eb-8d12-896a4389ca0f.gif)
 
+(Refresh timeline)
+
+![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/65196174/124275795-a33f7b80-db08-11eb-8b07-b4acf7805a23.gif)
+
+(Launch app icon in home screen)
+
+![ezgif com-gif-maker (8)](https://user-images.githubusercontent.com/65196174/124276068-fa455080-db08-11eb-8718-70ed84aca499.gif)
 
 ## Notes
 
