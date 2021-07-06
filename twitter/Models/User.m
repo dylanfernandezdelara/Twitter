@@ -18,8 +18,6 @@
         self.profilePicture = dictionary[@"profile_image_url_https"];
         self.followersCount = dictionary[@"followers_count"];
         self.followingCount = dictionary[@"friends_count"];
-        
-    // Initialize any other properties
     }
     return self;
 }

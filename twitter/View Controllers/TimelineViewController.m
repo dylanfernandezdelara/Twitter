@@ -20,12 +20,8 @@
 @interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 - (IBAction)logOutButton:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
-
-// UIRefreshControl is an object that handles refreshing
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-
 @end
 
 @implementation TimelineViewController
@@ -53,16 +49,11 @@
 }
 
 - (void)getTimeline {
-    // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
-            // added a typecast here to be mutable array but not 100% sure if this is correct
             self.arrayOfTweets = tweets;
-            NSLog(@"😎😎😎 Successfully loaded home timeline");
             for (Tweet *temp in tweets) {
-                // this used to be array
                 NSString *text = temp.text;
-                NSLog(@"%@", text);
             }
             [self.refreshControl endRefreshing];
             [self.tableView reloadData];
@@ -93,7 +84,6 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet *tweet_curr = self.arrayOfTweets[indexPath.row];
-    // NSLog(@"STRING: %@", tweet_curr.idStr);
     
     // set all properties of cell
     cell.realNameLabel.text = tweet_curr.user.name;
@@ -108,12 +98,10 @@
     cell.numRetweetsLabel.text = @(tweet_curr.retweetCount).stringValue;
     cell.numLikesLabel.text = @(tweet_curr.favoriteCount).stringValue;
     
-    // NSString *URLString = [tweet_curr.user.profilePicture stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     NSString *URLString = tweet_curr.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.pfPicture.image = [UIImage imageWithData:urlData];
-    //cell.pfPicture.layer.cornerRadius = 15;
     
     cell.retweetButton.selected = tweet_curr.retweeted;
     cell.likeButton.selected = tweet_curr.favorited;
